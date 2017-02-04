@@ -1,0 +1,52 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+  <button
+          class="navbar-toggler navbar-toggler-right"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+
+    <span class="navbar-toggler-icon"></span>
+
+  </button>
+
+  <span class="navbar-brand">Navbar</span>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav ">
+
+      <!-- User not logged in -->
+
+      <li *ngIf="! (authService.userLoggedIn$ | async)" class="nav-item">
+        <a (click)="open(content)" class="nav-link">Login</a>
+      </li>
+
+      <li *ngIf="! (authService.userLoggedIn$ | async)" class="nav-item">
+        <a class="nav-link">Register</a>
+      </li>
+
+      <!-- User is logged in -->
+
+
+
+      <li  *ngIf="authService.userLoggedIn$ | async" class="nav-item">
+        <a class="nav-link">Profile</a>
+      </li>
+
+      <li  *ngIf="authService.userLoggedIn$ | async" class="nav-item">
+        <a class="nav-link" (click)="authService.signOut()">Logout</a>
+      </li>
+
+
+
+    </ul>
+
+  </div>
+</nav>
+
+<template ngbModalContainer #content let-c="close" let-d="dismiss">
+
+</template>
