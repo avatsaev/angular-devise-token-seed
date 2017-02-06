@@ -8,7 +8,6 @@ import {environment } from '../environments/environment'
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'app works!';
 
   constructor(private tokenService: Angular2TokenService){
     tokenService.init(environment.token_auth_config);

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from "../services/auth.service";
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {ModalDirective} from "ng2-bootstrap";
 
 
 @Component({
@@ -10,29 +10,24 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ToolbarComponent implements OnInit {
 
-  closeResult: string;
+  @ViewChild('loginModal') public loginModal:ModalDirective;
 
-  constructor(protected authService:AuthService, private modalService: NgbModal) { }
+
+  constructor(protected authService:AuthService) { }
 
   ngOnInit() {
   }
 
-  open(content) {
-    this.modalService.open(content).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+  openLoginModal() {
+
+    this.loginModal.show();
+
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
+
+  openRegisterModal() {
+
   }
+
 
 }

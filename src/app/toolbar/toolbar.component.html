@@ -21,11 +21,11 @@
       <!-- User not logged in -->
 
       <li *ngIf="! (authService.userLoggedIn$ | async)" class="nav-item">
-        <a (click)="open(content)" class="nav-link">Login</a>
+        <a (click)="openLoginModal()" class="nav-link">Login</a>
       </li>
 
       <li *ngIf="! (authService.userLoggedIn$ | async)" class="nav-item">
-        <a class="nav-link">Register</a>
+        <a (click)="openRegisterModal()" class="nav-link">Register</a>
       </li>
 
       <!-- User is logged in -->
@@ -47,6 +47,23 @@
   </div>
 </nav>
 
-<template ngbModalContainer #content let-c="close" let-d="dismiss">
+<!--Modals-->
 
-</template>
+
+<div bsModal #loginModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Login</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-login-form>
+
+        </app-login-form>
+      </div>
+    </div>
+  </div>
+</div>
