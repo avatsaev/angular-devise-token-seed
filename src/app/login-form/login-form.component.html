@@ -1,42 +1,15 @@
+<form>
+  <md-input-container class="demo-full-width" style="width: 100%">
+    <input md-input #email placeholder="Email Address" >
+  </md-input-container>
 
+  <md-input-container style="width: 100%">
+    <input md-input type="password" placeholder="Password">
+  </md-input-container>
 
-
-
-
-
-<form (submit)="onSubmit()" #f="ngForm">
-
-  <div class="form-group">
-    <label for="email-input">Email address</label>
-    <input
-            name="email"
-            type="email"
-            class="form-control"
-            id="email-input"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
-
-            [(ngModel)]="loginData.email"
-            pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
-            required>
-  </div>
-  <div class="form-group">
-    <label for="password-input">Password</label>
-    <input
-            name="password"
-            type="password"
-            class="form-control"
-            id="password-input"
-            placeholder="Password"
-
-            [(ngModel)]="loginData.password"
-            required>
+  <div>
+    <input class="md-button-ripple primary"  type="submit" class="btn btn-primary"  value="Login"/>
   </div>
 
-  <div class="form-group float-right">
-    <input type="submit" class="btn btn-primary"  [disabled]="!(f.valid)" value="Login"/>
-  </div>
 
 </form>
-
-

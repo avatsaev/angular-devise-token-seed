@@ -9,24 +9,29 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import {AuthService} from "./services/auth.service";
 import { LoginFormComponent } from './login-form/login-form.component';
 import {RegisterFormComponent} from "./register-form/register-form.component";
-import { AlertModule} from 'ng2-bootstrap/alert';
-import { ModalModule } from 'ng2-bootstrap/modal';
+import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
+
+import { MaterialModule } from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    AuthDialogComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    ModalModule.forRoot()
+    MaterialModule.forRoot()
   ],
   providers: [Angular2TokenService, AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+      AuthDialogComponent
+  ]
 })
 export class AppModule { }

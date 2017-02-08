@@ -1,0 +1,8 @@
+<h2 md-dialog-title>{{authMode}}</h2>
+<md-dialog-content>
+
+  <app-login-form *ngIf="isLoginMode()"></app-login-form>
+
+  <app-register-form *ngIf="!isLoginMode()"></app-register-form>
+</md-dialog-content>
+

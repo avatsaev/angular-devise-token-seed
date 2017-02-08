@@ -1,7 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../services/auth.service";
-import {ModalDirective} from "ng2-bootstrap";
 
+import {MdDialog, MdDialogRef} from '@angular/material';
+import {AuthDialogComponent} from "../auth-dialog/auth-dialog.component";
 
 @Component({
   selector: 'app-toolbar',
@@ -10,17 +11,21 @@ import {ModalDirective} from "ng2-bootstrap";
 })
 export class ToolbarComponent implements OnInit {
 
-  @ViewChild('loginModal') public loginModal:ModalDirective;
-
-
-  constructor(protected authService:AuthService) { }
+  constructor(
+      protected authService:AuthService,
+      public dialog: MdDialog
+  ){}
 
   ngOnInit() {
   }
 
-  openLoginModal() {
+  openAuthModal(mode:"register" | "login" = "login") {
 
-    this.loginModal.show();
+    let authDialogRef = this.dialog.open(AuthDialogComponent);
+    authDialogRef.componentInstance.authMode = mode;
+
+
+    // this.authDialog.authMode = mode;
 
   }
 
